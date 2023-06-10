@@ -1,8 +1,11 @@
-from api.validators import validate_year
+from django.contrib.auth import get_user_model
 from django.core.validators import MinValueValidator, RegexValidator
 from django.db import models
 from django.db.models import UniqueConstraint
-from users.models import User
+
+from api.validators import validate_year
+
+User = get_user_model()
 
 
 class Tag(models.Model):
@@ -20,9 +23,11 @@ class Tag(models.Model):
         max_length=7,
         validators=(
             RegexValidator(
-                regex='^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$',
+                regex=r'^#[A-Fa-f0-9]{3,6}$',
                 code='wrong_hex_code',
-                message='Цвет не в формате HEX'),))
+                message='Цвет не в формате HEX'),
+        )
+    )
     slug = models.SlugField(
         'Slug',
         help_text='Введите заголовок тега',

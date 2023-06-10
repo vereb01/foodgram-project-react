@@ -25,8 +25,9 @@ class RecipeIngredientsInLine(admin.TabularInline):
 
 @admin.register(Recipe)
 class RecipeAdmin(admin.ModelAdmin):
-    list_display = ('pk', 'name', 'author', 'text',
-                    'cooking_time', 'image', 'date')
+    list_display = (
+        'pk', 'name', 'author', 'text', 'cooking_time', 'image', 'date'
+    )
     search_fields = ('name', 'author', 'text', 'cooking_time')
     list_filter = ('name', 'author', 'tags')
     readonly_fields = ('favarite_count',)
@@ -41,15 +42,3 @@ class RecipeIngridientsAdmin(admin.ModelAdmin):
     list_display = ('pk', 'recipe', 'ingredient', 'amount')
     search_fields = ('recipe', 'ingredient')
     list_filter = ('recipe', 'ingredient')
-
-#
-# @admin.register(ShoppingCart)
-# class ShoppingCartAdmin(admin.ModelAdmin):
-#     list_display = ('user', 'recipe',)
-#     search_fields = ('user', 'recipe',)
-#
-#
-# @admin.register(Favourite)
-# class FavouriteAdmin(admin.ModelAdmin):
-#     list_display = ('user', 'recipe',)
-#     search_fields = ('user', 'recipe',)

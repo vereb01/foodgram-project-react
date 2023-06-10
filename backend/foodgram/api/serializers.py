@@ -1,12 +1,13 @@
 from django.db.transaction import atomic
 from drf_extra_fields.fields import Base64ImageField
-from recipes.models import (Favourite, Ingredient, Recipe, RecipeIngredient,
-                            ShoppingCart, Tag)
 from rest_framework import serializers
 from rest_framework.exceptions import ValidationError
 from rest_framework.fields import SerializerMethodField
 from rest_framework.relations import PrimaryKeyRelatedField
 from rest_framework.serializers import ModelSerializer
+
+from recipes.models import (Favourite, Ingredient, Recipe, RecipeIngredient,
+                            ShoppingCart, Tag)
 from users.models import Subscription, User
 
 
@@ -115,15 +116,19 @@ class RecipeGetSerializer(ModelSerializer):
     tags = TagSerializer(many=True, read_only=True)
     author = UserSerializer(read_only=True)
     ingredients = IngredientRecipeCreateSerializer(
-        source='recipeingredient', many=True)
+        source='recipeingredient',
+        many=True
+    )
     image = Base64ImageField()
     is_favorite = SerializerMethodField(read_only=True)
     is_in_cart = SerializerMethodField(read_only=True)
 
     class Meta:
         model = Recipe
-        fields = ('id', 'tags', 'author', 'ingredients', 'name',
-                  'image', 'text', 'cooking_time', 'is_favorite', 'is_in_cart')
+        fields = (
+            'id', 'tags', 'author', 'ingredients', 'name',
+            'image', 'text', 'cooking_time', 'is_favorite', 'is_in_cart'
+        )
 
     def get_is_favorite(self, obj):
         user = self.context['request'].user
