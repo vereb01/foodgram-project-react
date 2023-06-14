@@ -28,7 +28,7 @@
 
 ```bash
   cd foodgram
-  cd backend\foodgram
+  cd backend/foodgram
 ```
 
 Устанавливаем Виртуальное окружение:
