@@ -1,10 +1,13 @@
 from django.conf import settings
 from django.conf.urls.static import static
-from django.urls import include, path, re_path
+from django.urls import include, path
 from rest_framework.routers import DefaultRouter
 
 from .views import (
-    CustomUserViewSet, IngredientViewSet, RecipeViewSet, TagViewSet
+    CustomUserViewSet,
+    IngredientViewSet,
+    RecipeViewSet,
+    TagViewSet,
 )
 
 app_name = 'api'
@@ -20,7 +23,7 @@ router.register('recipes', RecipeViewSet, basename='recipes')
 urlpatterns = [
     path('', include(router.urls)),
     path('auth/', include('djoser.urls')),
-    re_path('auth/', include('djoser.urls.authtoken')),
+    path('auth/', include('djoser.urls.authtoken')),
 ]
 
 if settings.DEBUG:

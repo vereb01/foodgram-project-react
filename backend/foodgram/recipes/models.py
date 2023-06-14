@@ -5,6 +5,7 @@ from django.db.models import UniqueConstraint
 
 from api.validators import validate_year
 
+
 User = get_user_model()
 
 
@@ -147,7 +148,7 @@ class RecipeIngredient(models.Model):
         return f'{str(self.ingredient)} in {str(self.recipe)}-{self.amount}'
 
 
-class Favourite(models.Model):
+class Favorite(models.Model):
     """Модель Избранное"""
 
     user = models.ForeignKey(
@@ -169,7 +170,7 @@ class Favourite(models.Model):
         constraints = (
             UniqueConstraint(
                 fields=('user', 'recipe'),
-                name='unique_favourite'
+                name='unique_favorite'
             ),
         )
 
