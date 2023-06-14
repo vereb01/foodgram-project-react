@@ -1,6 +1,6 @@
 ![vereb01/yamdb_final](https://github.com/vereb01/yamdb_final-1/actions/workflows/yamdb_workflow.yml/badge.svg) # сделать значек нового проекта 
 
-Проект доступен по адресу 51.250.90.79
+Проект доступен по адресу [51.250.90.79](http://51.250.90.79/)
 
 
 ## foodgram-project-react
