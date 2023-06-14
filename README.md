@@ -68,6 +68,14 @@ TELEGRAM_TO
 TELEGRAM_TOKEN
 USER
 ```
-Для размещения проекта вам наподобиться сервер, например ВМ Yandex.Cloud. Далее нам необходимо установить Docker и docker-compose на сервер:
+В директории infra следует выполнить команды:
+```
+docker-compose up -d
+docker-compose exec Django python manage.py makemigrations
+docker-compose exec Django python manage.py migrate
+docker-compose exec Django python manage.py collectstatic --no-input
+```
+
+
 
 
