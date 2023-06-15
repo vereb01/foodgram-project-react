@@ -1,6 +1,5 @@
 from django.shortcuts import get_object_or_404
-from rest_framework import filters
-from django_filters.rest_framework import DjangoFilterBackend
+from django_filters.rest_framework import DjangoFilterBackend, filters
 from djoser.views import UserViewSet
 from rest_framework import status, viewsets
 from rest_framework.decorators import action
