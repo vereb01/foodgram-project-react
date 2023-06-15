@@ -1,5 +1,5 @@
 from django.shortcuts import get_object_or_404
-from django_filters.rest_framework import DjangoFilterBackend, filters
+from django_filters.rest_framework import DjangoFilterBackend
 from djoser.views import UserViewSet
 from rest_framework import status, viewsets
 from rest_framework.decorators import action
@@ -9,6 +9,7 @@ from rest_framework.permissions import (
     IsAuthenticatedOrReadOnly,
 )
 from rest_framework.response import Response
+from rest_framework import filters
 
 from recipes.models import Favorite, Ingredient, Recipe, ShoppingCart, Tag
 from users.models import Subscription, User
@@ -103,8 +104,8 @@ class IngredientViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = IngredientSerializer
     permission_classes = (IsAuthenticatedOrReadOnly,)
     pagination_class = None
-    filter_backends = [NameFilter]
-    search_fields = ('^name', )
+    filter_backends = [filters.SearchFilter]
+    search_fields = ['^name',]
 
 
 class RecipeViewSet(viewsets.ModelViewSet):
