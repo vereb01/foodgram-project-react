@@ -1,4 +1,5 @@
 from django.shortcuts import get_object_or_404
+from rest_framework import filters
 from django_filters.rest_framework import DjangoFilterBackend
 from djoser.views import UserViewSet
 from rest_framework import status, viewsets
@@ -103,8 +104,8 @@ class IngredientViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = IngredientSerializer
     permission_classes = (IsAuthenticatedOrReadOnly,)
     pagination_class = None
-    filter_backends = (NameFilter,)
-    search_fields = ('^name',)
+    filter_backends = [filters.SearchFilter]
+    search_fields = ['^name', ]
 
 
 class RecipeViewSet(viewsets.ModelViewSet):
