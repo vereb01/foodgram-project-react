@@ -4,8 +4,8 @@ from recipes.models import Ingredient, Recipe, Tag
 from users.models import User
 
 
-class CustomNameFilter(filters.SearchFilter):
-    search_param = 'name'
+class CustomNameFilter(filters.FilterSet):
+    name = filters.CharFilter(lookup_expr='icontains')
 
     class Meta:
         model = Ingredient

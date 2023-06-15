@@ -103,8 +103,8 @@ class IngredientViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = IngredientSerializer
     permission_classes = (IsAuthenticatedOrReadOnly,)
     pagination_class = None
-    filter_backends = (CustomNameFilter,)
-    search_fields = ('^name',)
+    filterset_class = CustomNameFilter
+    # search_fields = ('^name',)
 
 
 class RecipeViewSet(viewsets.ModelViewSet):
