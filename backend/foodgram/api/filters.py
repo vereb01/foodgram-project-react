@@ -1,5 +1,5 @@
 from django_filters import ModelMultipleChoiceFilter
-from django_filters.rest_framework import FilterSet
+from django_filters.rest_framework import FilterSet, filters
 from rest_framework.filters import SearchFilter
 
 from recipes.models import Recipe, Tag
@@ -31,5 +31,5 @@ class RecipeFilter(FilterSet):
         fields = ('tags', 'author')
 
 
-class NameFilter(SearchFilter):
+class CustomNameFilter(SearchFilter):
     search_param = 'name'
