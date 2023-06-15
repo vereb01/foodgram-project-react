@@ -4,12 +4,12 @@ from recipes.models import Ingredient, Recipe, Tag
 from users.models import User
 
 
-class CustomNameFilter(filters.FilterSet):
-    name = filters.CharFilter(lookup_expr='icontains')
+class IngredientFilter(filters.FilterSet):
+    name = filters.CharFilter(lookup_expr='istartswith')
 
     class Meta:
         model = Ingredient
-        fields = ('name',)
+        fields = ('name', )
 
 
 class RecipeFilter(filters.FilterSet):

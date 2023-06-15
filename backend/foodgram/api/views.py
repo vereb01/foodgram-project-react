@@ -13,7 +13,7 @@ from rest_framework.response import Response
 from recipes.models import Favorite, Ingredient, Recipe, ShoppingCart, Tag
 from users.models import Subscription, User
 
-from .filters import RecipeFilter, CustomNameFilter
+from .filters import RecipeFilter, CustomNameFilter, IngredientFilter
 from .pagination import CustumPagination
 from .permissions import AuthorOrReadOnly, AdminOrReadOnly
 from .serializers import (
@@ -103,8 +103,8 @@ class IngredientViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = IngredientSerializer
     permission_classes = (AdminOrReadOnly,)
     pagination_class = None
-    search_fields = ('^name',)
-    filter_backends = (filters.SearchFilter,)
+    # search_fields = ('^name',)
+    filterset_class = (IngredientFilter,)
 
 
 class RecipeViewSet(viewsets.ModelViewSet):
