@@ -4,7 +4,7 @@ from recipes.models import Ingredient, Recipe, Tag
 from users.models import User
 
 
-class CustomNameFilter(SearchFilter):
+class CustomNameFilter(filters.SearchFilter):
     search_param = 'name'
 
     class Meta:
@@ -12,8 +12,8 @@ class CustomNameFilter(SearchFilter):
         fields = ('name',)
 
 
-class RecipeFilter(FilterSet):
-    tags = ModelMultipleChoiceFilter(
+class RecipeFilter(filters.FilterSet):
+    tags = filters.ModelMultipleChoiceFilter(
         field_name='tags__slug',
         to_field_name='slug',
         queryset=Tag.objects.all()
