@@ -97,6 +97,7 @@ class IngredientSerializer(serializers.ModelSerializer):
         fields = ('id', 'name', 'measurement_unit')
 
 
+
 class IngredientRecipeCreateSerializer(ModelSerializer):
     """Сериализатор ингредиентов для рецепта"""
 
