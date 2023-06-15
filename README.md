@@ -1,4 +1,4 @@
-![vereb01/yamdb_final](https://github.com/vereb01/yamdb_final-1/actions/workflows/yamdb_workflow.yml/badge.svg)
+![vereb01/yamdb_final](https://github.com/vereb01/foodgram-project-react/actions/workflows/main.yml/badge.svg)
 
 Проект доступен по адресу [51.250.90.79](http://51.250.90.79/)
 
