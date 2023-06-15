@@ -15,7 +15,7 @@ from users.models import Subscription, User
 
 from .filters import RecipeFilter, CustomNameFilter
 from .pagination import CustumPagination
-from .permissions import AuthorOrReadOnly
+from .permissions import AuthorOrReadOnly, AdminOrReadOnly
 from .serializers import (
     IngredientSerializer,
     RecipeCreateSerializer,
@@ -101,7 +101,7 @@ class TagViewSet(viewsets.ReadOnlyModelViewSet):
 class IngredientViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Ingredient.objects.all()
     serializer_class = IngredientSerializer
-    permission_classes = (IsAuthenticatedOrReadOnly,)
+    permission_classes = (AdminOrReadOnly,)
     pagination_class = None
     filterset_class = CustomNameFilter
     # search_fields = ('^name',)
