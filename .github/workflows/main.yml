@@ -43,7 +43,7 @@ jobs:
             with:
               push: true
               context: ./backend/foodgram/
-              tags: ${{ secrets.DOCKER_USERNAME }}/foodgram:latest
+              tags: ${{ secrets.DOCKER_USERNAME }}/foodgram:v1
     build_push_frontend_to_docker_hub:
           name: Push frontend Docker image to Docker Hub
           runs-on: ubuntu-latest
@@ -81,7 +81,7 @@ jobs:
                key: ${{ secrets.SSH_KEY }}
                script: |
                   echo ${{ secrets.DOCKER_PASSWORD }} | sudo docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
-                  sudo docker pull ${{ secrets.DOCKER_USERNAME }}/foodgram:latest
+                  sudo docker pull ${{ secrets.DOCKER_USERNAME }}/foodgram:v1
                   sudo docker pull ${{ secrets.DOCKER_USERNAME }}/foodgram-frontend:latest
                   sudo docker compose stop
                   sudo docker compose rm backend
