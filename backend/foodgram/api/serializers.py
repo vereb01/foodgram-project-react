@@ -1,5 +1,11 @@
 from django.db.transaction import atomic
 from drf_extra_fields.fields import Base64ImageField
+from rest_framework import serializers
+from rest_framework.exceptions import ValidationError
+from rest_framework.relations import PrimaryKeyRelatedField
+from rest_framework.serializers import ModelSerializer
+from rest_framework.validators import UniqueTogetherValidator
+
 from recipes.models import (
     Favorite,
     Ingredient,
@@ -8,11 +14,6 @@ from recipes.models import (
     ShoppingCart,
     Tag,
 )
-from rest_framework import serializers
-from rest_framework.exceptions import ValidationError
-from rest_framework.relations import PrimaryKeyRelatedField
-from rest_framework.serializers import ModelSerializer
-from rest_framework.validators import UniqueTogetherValidator
 from users.models import Subscription, User
 
 
@@ -95,7 +96,6 @@ class IngredientSerializer(serializers.ModelSerializer):
     class Meta:
         model = Ingredient
         fields = ('id', 'name', 'measurement_unit')
-
 
 
 class IngredientRecipeCreateSerializer(ModelSerializer):

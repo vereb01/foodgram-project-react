@@ -14,7 +14,6 @@ class TagAdmin(admin.ModelAdmin):
 class IngredientAdmin(admin.ModelAdmin):
     list_display = ('pk', 'name', 'measurement_unit')
     search_fields = ('name', 'measurement_unit')
-  #  list_filter = ('name', 'measurement_unit')
 
 
 class RecipeIngredientsInLine(admin.TabularInline):

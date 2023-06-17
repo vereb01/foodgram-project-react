@@ -1,6 +1,7 @@
 from django.shortcuts import get_object_or_404
-from django_filters.rest_framework import DjangoFilterBackend, filters
+from django_filters.rest_framework import DjangoFilterBackend
 from djoser.views import UserViewSet
+from recipes.models import Favorite, Ingredient, Recipe, ShoppingCart, Tag
 from rest_framework import status, viewsets
 from rest_framework.decorators import action
 from rest_framework.permissions import (
@@ -9,13 +10,11 @@ from rest_framework.permissions import (
     IsAuthenticatedOrReadOnly,
 )
 from rest_framework.response import Response
-
-from recipes.models import Favorite, Ingredient, Recipe, ShoppingCart, Tag
 from users.models import Subscription, User
 
-from .filters import RecipeFilter, IngredientFilter
+from .filters import IngredientFilter, RecipeFilter
 from .pagination import CustumPagination
-from .permissions import AuthorOrReadOnly, AdminOrReadOnly
+from .permissions import AdminOrReadOnly, AuthorOrReadOnly
 from .serializers import (
     IngredientSerializer,
     RecipeCreateSerializer,

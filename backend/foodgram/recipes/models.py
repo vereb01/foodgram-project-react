@@ -5,7 +5,6 @@ from django.db.models import UniqueConstraint
 
 from api.validators import validate_year
 
-
 User = get_user_model()
 
 
